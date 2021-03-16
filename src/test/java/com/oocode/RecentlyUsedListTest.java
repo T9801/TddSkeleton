@@ -6,7 +6,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.core.Is.*;
 
-public class ExampleTest {
+public class RecentlyUsedListTest {
 
 	@Test
 	public void listShouldBeEmptyWhenInitialised() {
@@ -40,4 +40,33 @@ public class ExampleTest {
 		Assert.assertThat(list.retrieve(1), equalTo("BBB"));
 	}
 
+	@Test
+	public void OneShouldNotBeAbleToRetrieveMoreElementsThanTheMaximum() {
+		RecentlyUsedList list = new RecentlyUsedList();
+		list.add("AAA");
+
+		boolean caught = false;
+		try{
+			list.retrieve(1);
+		} catch (java.lang.ArrayIndexOutOfBoundsException e){
+			caught = true;
+			Assert.assertNotNull(e);
+		}
+		Assert.assertTrue(caught);
+	}
+
+	@Test
+	public void OneShouldOnlyBeAbleToAdd3ElementsToTheList(){
+		RecentlyUsedList list = new RecentlyUsedList();
+		list.add("AAA");
+		list.add("BBB");
+		list.add("CCC");
+		try{
+			list.add("DDD");
+		}
+		catch (java.lang.ArrayIndexOutOfBoundsException e){
+
+		}
+		Assert.assertThat(list.length(), equalTo(3));
+	}
 }
