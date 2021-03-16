@@ -11,7 +11,7 @@ public class RecentlyUsedList {
 	}
 
 	public int length(){
-		return 0;
+		return _numberOfElements;
 	}
 
 	public boolean isEmpty(){
