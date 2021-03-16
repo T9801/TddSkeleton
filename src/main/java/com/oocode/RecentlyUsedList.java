@@ -6,6 +6,6 @@ public class RecentlyUsedList {
 	}
 
 	public boolean isEmpty(){
-		return false;
+		return true;
 	}
 }
