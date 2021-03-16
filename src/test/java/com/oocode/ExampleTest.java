@@ -19,6 +19,15 @@ public class ExampleTest {
 		RecentlyUsedList list = new RecentlyUsedList();
 		list.add("First entry!");
 		Assert.assertThat(list.retrieve(), equalTo("First entry!"));
+		Assert.assertFalse(list.isEmpty());
+	}
+
+	@Test
+	public void OneShouldBeAbleToRetrieveTheLatestEntryFromTheList() {
+		RecentlyUsedList list = new RecentlyUsedList();
+		list.add("First entry!");
+		list.add("Second entry!");
+		Assert.assertThat(list.retrieve(), equalTo("Second entry!"));
 	}
 
 }

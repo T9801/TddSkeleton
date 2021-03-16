@@ -1,18 +1,21 @@
 package com.oocode;
 
 public class RecentlyUsedList {
+	private String _list;
+
 	public RecentlyUsedList(){
 
 	}
+
 	public boolean isEmpty(){
 		return true;
 	}
 
 	public void add(String arg){
-		//return false;
+		_list = arg;
 	}
 
 	public String retrieve(){
-		return "...";
+		return _list;
 	}
 }
