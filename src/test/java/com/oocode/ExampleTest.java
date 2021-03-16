@@ -18,7 +18,7 @@ public class ExampleTest {
 	public void OneShouldBeAbleToAddSomethingToTheList() {
 		RecentlyUsedList list = new RecentlyUsedList();
 		list.add("First entry!");
-		Assert.assertThat(list.retrieve(), equalTo("First entry!"));
+		Assert.assertThat(list.retrieve(0), equalTo("First entry!"));
 		Assert.assertFalse(list.isEmpty());
 	}
 
@@ -27,7 +27,17 @@ public class ExampleTest {
 		RecentlyUsedList list = new RecentlyUsedList();
 		list.add("First entry!");
 		list.add("Second entry!");
-		Assert.assertThat(list.retrieve(), equalTo("Second entry!"));
+		Assert.assertThat(list.retrieve(0), equalTo("Second entry!"));
+	}
+
+	@Test
+	public void ListItemsAreUnique() {
+		RecentlyUsedList list = new RecentlyUsedList();
+		list.add("BBB");
+		list.add("AAA");
+		list.add("AAA");
+		Assert.assertThat(list.retrieve(0), equalTo("AAA"));
+		Assert.assertThat(list.retrieve(1), equalTo("BBB"));
 	}
 
 }
